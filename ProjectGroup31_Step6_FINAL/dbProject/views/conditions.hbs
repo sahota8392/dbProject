@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+    <h1>Conditions</h1>
+</header>
+    <nav>
+        <a class="button-29" href="/">Employees</a>
+        <a class="button-29" href="/invoices">Invoices</a>
+        <a class="button-29" href="/customers">Customers</a>
+        <a class="button-29" href="/games">Games</a>
+        <a class="button-29" href="/conditions">Condtions</a>
+    </nav>
+<div>
+    <p><strong>Browse conditions</strong></p>
+    <table class="styled-table" border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>condition_rating</th>
+                <th>name_of_game</th>
+                <th>game_id</th>
+                <th>is_used</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.condition_rating}}</td>
+                <td>{{this.name_of_game}}</td>
+                <td>{{this.game_id}}</td>
+                <td>{{this.is_used}}</td>  
+                <td class="delete"><button class="button-29"onclick="deleteCondition({{this.game_id}})">DELETE</button>
+
+                <a class="button-29" href="#" onclick="editCondition('{{this.condition_rating}}', '{{this.name_of_game}}', '{{this.game_id}}', '{{this.is_used}}')">Edit</a>
+
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form id="addCondtion" method="post">
+        <legend>
+            <strong>Add Conditions</strong>
+        </legend>
+        <fieldset>
+            <label>condition rating</label>
+            <input type="number" name="condition_rating">
+            <label>name of game</label>
+            <input type="text" name="name_of_game">
+            <label>game id</label>
+            <input type="number" name="game_id">
+            <label>is used</label>
+            <input type="number" name="is_used">
+        </fieldset>
+        <button class="button-29" type="submit">Add</button>
+    </form>
+</div>
+<div>
+    <form id="updateCondition" method="post">
+        <legend>
+            <strong>Update Condition</strong>
+        </legend>
+        <fieldset>
+            <label>Game ID
+                <input type="number" name="game_id" readonly>
+            </label>
+            <label>Condition Rating
+                <input type="number" name="condition_rating">
+            </label>
+            <label>Name of Game
+                <input type="text" name="name_of_game">
+            </label>
+            <label>Is Used
+                <input type="number" name="is_used">
+            </label>
+        </fieldset>
+        <button class="button-29" type="submit">Update</button>
+    </form>
+</div> 
+</body>
+    <script src="/js/condition-delete.js"></script>   
+    <script src="/js/condition-update.js"></script>  
+</html>

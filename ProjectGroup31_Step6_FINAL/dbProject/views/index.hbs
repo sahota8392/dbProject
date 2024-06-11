@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+    <h1>Employees</h1>
+</header>
+    <nav>
+        <a class="button-29"href="/">Employees</a>
+        <a class="button-29" href="/invoices">Invoices</a>
+        <a class="button-29" href="/customers">Customers</a>
+        <a class="button-29" href="/games">Games</a>
+        <a class="button-29" href="/conditions">Condtions</a>
+    </nav>
+<div>
+    <p><strong>Browse employees</strong></p>
+    <table class="styled-table" border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>employee_id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.employee_id}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td class="delete"><button class="button-29" onclick="deleteEmployee({{this.employee_id}})">DELETE</button>
+
+                <a class="button-29" href="#" onclick="editEmployee({{this.employee_id}}, '{{this.first_name}}', '{{this.last_name}}')">Edit</a>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form id="addEmployee" method="post">
+        <legend>
+            <strong>Add Employee</strong>
+        </legend>
+        <fieldset>
+            <label>First name</label>
+            <input id="fname" type="text" name="first_name">
+            <label>Last name</label>
+            <input id="lname" type="text" name="last_name">
+        </fieldset>
+        <button class="button-29" type="submit">Add</button>
+    </form>
+</div>
+<div>
+    <form id="updateEmployee" method="post">
+        <legend>
+            <strong>Update Employee</strong>
+        </legend>
+        <fieldset>
+            <label>Empoyee ID
+                <input type="text" name="employee_id" readonly>
+            </label>
+            <label>First Name
+                <input type="text" name="employee_fname">
+            </label>
+            <label>Last Name
+                <input type="text" name="employee_lname">
+            </label>
+        </fieldset>
+        <button class="button-29" type="submit">Update</button>
+    </form>
+</div> 
+</body>
+    <script src="/js/employee-delete.js"></script>   
+    <script src="/js/employee-update.js"></script>  
+</html>

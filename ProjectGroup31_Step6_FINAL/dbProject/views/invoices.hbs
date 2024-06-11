@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" contents="noindex">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Manage invoices</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="mainfest" href="site.webmanifest">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<header>
+    <h1>Invoices</h1>
+</header>
+    <nav>
+        <a class="button-29" href="/">Employees</a>
+        <a class="button-29" href="/invoices">Invoices</a>
+        <a class="button-29" href="/customers">Customers</a>
+        <a class="button-29" href="/games">Games</a>
+        <a class="button-29" href="/conditions">Condtions</a>
+    </nav>
+<div>
+    <p><strong>Browse invoices</strong></p>
+    <table class="styled-table" border="1" cellpadding="5">
+        <thead>
+            <tr>
+            <th>invoice id</th>
+            <th>employee id</th>
+            <th>customer id</th>
+            <th>game id</th>
+            <th>date of sale</th>
+            <th>price</th>
+            <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.invoice_id}}</td>
+                <td>{{this.employee_id}}</td>
+                <td>{{this.customer_id}}</td>
+                <td>{{this.game_id}}</td>
+                <td>{{this.date_of_sale}}</td>
+                <td>{{this.price}}</td>
+
+                <td>
+                <button class="button-29" onclick="deleteInvoice('{{this.invoice_id}}')">DELETE</button>
+
+                <a class="button-29" href="#" onclick="editInvoice('{{this.invoice_id}}', '{{this.employee_id}}', '{{this.customer_id}}', '{{this.game_id}}', '{{this.date_of_sale}}', '{{this.price}}')">Edit</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form id="addInvoice" method="post">
+        <legend>
+            <strong>Add Invoice</strong>
+        </legend>
+        <fieldset>
+            <label>employee id</label>
+            <input type="number" name="employee_id">
+
+            <label>customer id</label>
+            <input type="number" name="customer_id">
+
+            <label>game id</label>
+            <input type="number" name="game_id">
+
+            <label>date of sale</label>
+            <input type="date" name="date">
+
+            <label>price</label>
+            <input type="number" min="0" step="any" name="price">
+
+        </fieldset>
+        <button class="button-29" type="submit">Add</button>
+    </form>
+</div>
+
+<div>
+    <form id="updateInvoice" method="post">
+        <legend>
+            <strong>Update Invoice</strong>
+        </legend>
+        <fieldset>
+            <label>Invoice ID
+                <input type="text" name="invoice_id" readonly>
+            </label>
+
+            <label>Employee ID
+                <input type="text" name="employee_id">
+            </label>
+
+            <label>Customer ID
+                <input type="text" name="customer_id">
+            </label>
+
+            <label>Game ID
+                <input type="text" name="game_id">
+            </label>
+
+            <label>Date of Sale
+                <input type="text" name="date_of_sale">
+            </label>
+
+            <label>Price
+                <input type="text" name="price">
+            </label>
+
+        </fieldset>
+        <button class="button-29" type="submit">Update</button>
+    </form>
+</div>
+</body>
+
+    <script src="/js/invoices-delete.js"></script>   
+    <script src="/js/invoices-update.js"></script>   
+</html>

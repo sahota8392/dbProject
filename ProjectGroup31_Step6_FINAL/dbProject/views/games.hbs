@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manage games</title>
+</head>
+<body>
+<header>
+    <h1>Games</h1>
+</header>
+    <nav>
+        <a class="button-29" href="/">Employees</a>
+        <a class="button-29" href="/invoices">Invoices</a>
+        <a class="button-29" href="/customers">Customers</a>
+        <a class="button-29" href="/games">Games</a>
+        <a class="button-29" href="/conditions">Condtions</a>
+    </nav>
+<div>
+    <p><strong>Browse games</strong></p>
+    <table class="styled-table" border="1" cellpadding="5">
+        <thead>
+            <tr>
+            <th>game_id</th>
+            <th>title</th>
+            <th>platform</th>
+            <th>studio</th>
+            <th>inventory</th>
+            <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+            <td>{{this.game_id}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.platform}}</td>
+            <td>{{this.studio}}</td>
+            <td>{{this.inventory}}</td>
+
+            <td class="delete"><button class="button-29" onclick="deleteGame('{{this.game_id}}')">DELETE</button>
+            
+            <a class="button-29" href="#" onclick="editGame({{this.game_id}}, '{{this.title}}', '{{this.platform}}', '{{this.studio}}', '{{this.inventory}}')">Edit</a>
+            </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form id="addGame">
+        <legend>
+            <strong>Add Game</strong>
+        </legend>
+        <fieldset>
+            <label>title</label>
+            <input type="text" name="title">
+
+            <label>platform</label>
+            <input type="text" name="platform">
+
+            <label>studio</label>
+            <input type="text" name"studio">
+
+            <label>inventory</label>
+            <input type="number" name="inventory">
+            
+            <label>condition rating</label>
+            <input type="number" name="condition">
+            
+            <label>game is used</label>
+            <input type="text" name="used">
+        </fieldset>
+        <button class="button-29" type="submit">Add</button>
+    </form>
+</div>
+<div>
+    <form id="updateGame" method="post">
+        <legend>
+            <strong>Update game</strong>
+        </legend>
+        <fieldset>
+            <label>Game ID
+                <input type="text" name="game_id" readonly>
+            </label>
+
+            <label>Title
+                <input type="text" name="title">
+            </label>
+
+            <label>Platform
+                <input type="text" name="platform">
+            </label>
+
+            <label>Studio
+                <input type="text" name="studio">
+            </label>
+
+            <label>Inventory
+                <input type="number" name="inventory">
+            </label>
+        </fieldset>
+            <button class="button-29" type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+    <script src="/js/games-delete.js"></script>   
+    <script src="/js/games-update.js"></script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+</head>
+<body>
+<header>
+    <h1>Customers</h1>
+</header>
+<nav>
+    <a class="button-29" href="/">Employees</a>
+    <a class="button-29" href="/invoices">Invoices</a>
+    <a class="button-29" href="/customers">Customers</a>
+    <a class="button-29" href="/games">Games</a>
+    <a class="button-29" href="/conditions">Conditions</a>
+</nav>
+<div>
+    <p><strong>Browse customers</strong></p>
+    <table class="styled-table" border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>customer_id</th>
+                <th>customer_first_name</th>
+                <th>customer_last_name</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.customer_id}}</td>
+                <td>{{this.customer_first_name}}</td>
+                <td>{{this.customer_last_name}}</td>
+                <td class="delete"><button class="button-29" onclick="deleteCustomer({{this.customer_id}})">DELETE</button>
+
+                <a class="button-29" href="#" onclick="editCustomer({{this.customer_id}}, '{{this.customer_first_name}}', '{{this.customer_last_name}}')">Edit</a>
+
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form id="addCustomer" method="post">
+        <legend>
+            <strong>Add Customer</strong>
+        </legend>
+        <fieldset>
+            <label>First Name
+                <input type="text" name="customer_fname">
+            </label>
+
+            <label>Last Name
+                <input type="text" name="customer_lname">
+            </label>
+        </fieldset>
+        <button class="button-29" type="submit">Add</button>
+    </form>
+</div>
+
+<div>
+    <form id="updateCustomer" method="post">
+        <legend>
+            <strong>Update Customer</strong>
+        </legend>
+        <fieldset>
+            <label>Customer ID
+                <input type="text" name="customer_id" readonly>
+            </label>
+            <label>First Name
+                <input type="text" name="customer_fname">
+            </label>
+            <label>Last Name
+                <input type="text" name="customer_lname">
+            </label>
+        </fieldset>
+        <button class="button-29" type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+    <script src="/js/customer-delete.js"></script>   
+    <script src="/js/customer-update.js"></script>  
+</html>
